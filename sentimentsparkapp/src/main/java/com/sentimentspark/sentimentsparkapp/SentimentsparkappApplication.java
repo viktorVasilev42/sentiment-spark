@@ -1,12 +1,12 @@
 package com.sentimentspark.sentimentsparkapp;
 
-import com.sentimentspark.sentimentsparkapp.service.pythonScriptRunner;
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sentimentspark.sentimentsparkapp.service.PythonScriptRunner;
 
 @SpringBootApplication
 public class SentimentsparkappApplication implements CommandLineRunner {
@@ -19,7 +19,7 @@ public class SentimentsparkappApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		pythonScriptRunner pythonScriptRunner=new pythonScriptRunner(List.of("META","GOOG"));
+		PythonScriptRunner pythonScriptRunner = new PythonScriptRunner(List.of("META","GOOG"));
 		pythonScriptRunner.runScript();
 	}
 }

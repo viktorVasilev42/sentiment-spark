@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(33, 41, 70);
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow: hidden;
+    margin: 0px;
+}
+
+.appBar {
+    display: flex;
+    height: 10vh; width: 100vw;
+}
+
+.homeContainer {
+    display: flex; flex-direction: column;
+    align-items: center;
+    height: 90vh; width: 100vw;
+}
+
+.scraperSelector {
+    display: flex; 
+    justify-content: center; align-items: center; gap: 1vw;
+    height: 6vh; width: 95vw;
+    border-bottom: 0.2vh solid rgb(59, 73, 125);
+
+    .scraperItem {
+       display: flex; justify-content: center; align-items: center;
+       height: 6vh; width: 10vw;
+       color: white;
+       font-weight: 700;
+       border-radius: 1vh 1vh 0vh 0vh;
+       cursor: pointer;
+    }
+
+    .scraperItemSelected {
+       background-color: rgb(6, 158, 163);
+    }
+
+    .scraperItem:hover {
+        transition: 1s;
+        background-color: teal;
+    }
+}
+
+.siteStats {
+    display: flex; justify-content: center; align-items: center;
+    height: 10vh; width: 100vw;
+
+    .siteStatsItem {
+        display: flex; justify-content: center; align-items: center;
+        height: 10vh; width: 20vw;
+    }
+
+    .siteStatsSeparator{
+        background-color: rgb(59, 73, 125);
+        height: 7vh; width: 0.1vw;
+    }
+}
+
+.stocksStatsContainer {
+    height: 10vh; width: 100vw; overflow: hidden;
+
+.stocksStats {
+    display: flex; justify-content: flex-start; align-items: center;
+    height: 10vh; width: 99vw; gap: 1vw; 
+    overflow-x: scroll; overflow-y: hidden;
+    padding-top: 5px;
+    padding-bottom: 17px;
+    padding-inline: 1vw 1vw;
+    box-sizing: content-box;
+
+    .stocksStatsItem {
+        display: flex; justify-content: flex-start; align-items: center;
+        padding-inline: 1vw 1vw;
+        font-size: 1.7vh;
+        gap: 1vw;
+        height: 8vh; width: 13vw;
+        border: 0.2vh solid rgb(59, 73, 125); 
+        border-radius: 1vh;
+
+        .arrowUp {
+            height: 2.5vw; width: 2.5vw;
+            background-color: lightgreen;
+            border-radius: 0.2vh;
+        }
+    }
+}
+}

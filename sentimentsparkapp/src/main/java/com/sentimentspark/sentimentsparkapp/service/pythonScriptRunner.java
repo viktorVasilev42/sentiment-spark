@@ -3,10 +3,10 @@ package com.sentimentspark.sentimentsparkapp.service;
 import java.io.IOException;
 import java.util.List;
 
-public class pythonScriptRunner {
+public class PythonScriptRunner {
     private List<String> companies;
 
-    public pythonScriptRunner(List<String> companies) {
+    public PythonScriptRunner(List<String> companies) {
         this.companies = companies;
     }
     public void runScript() throws IOException, InterruptedException {
