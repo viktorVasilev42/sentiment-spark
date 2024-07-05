@@ -22,11 +22,8 @@ def trim_date_time(input_string):
 def compound_score(title):
     return vader.polarity_scores(title)['compound']
 
-
 n = len(sys.argv)
-print(n)
 tickers = sys.argv[1:]
-print(tickers)
 finviz_url = 'https://finviz.com/quote.ashx?t='
 # tickers = ['AMZN', 'GOOG',]
 # tickers = ['META', 'AMZN', 'GOOG', 'NFLX']
@@ -61,11 +58,9 @@ for ticker, news_table in news_tables.items():
         if (date == 'Today'):
             date = pd.Timestamp.now().date()
 
-        threshold_date = pd.Timestamp.now().normalize() - pd.Timedelta(days=4)
+        threshold_date = pd.Timestamp.now().normalize() - pd.Timedelta(days=3)
         if date and pd.Timestamp(date) >= threshold_date:
             parsed_data.append([ticker, date, time, title])
-
-#  print(parsed_data)
 
 df = pd.DataFrame(parsed_data,
                   columns=['ticker', 'date', 'time', 'title']  # type: ignore
@@ -83,7 +78,7 @@ grouped_data = df.groupby(['ticker', 'date'])['compound'].mean().reset_index()
 pivot_data = grouped_data.pivot(index='date', columns='ticker', values='compound')
 print(pivot_data)
 
-# Plotting
+# Plotting the bar chart
 plt.style.use('cyberpunk')
 pivot_data.plot(kind='bar', figsize=(12, 6), width=0.8)
 plt.title('Sentiment Scores by Ticker and Date')
@@ -96,5 +91,47 @@ plt.tight_layout()
 for i in range(0, len(tickers)):
     mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[i])
 
+# Save the bar chart
+plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_bar.png', format='png', dpi=300)
+
+# Show the bar chart (optional)
+plt.show()
+
+# Plotting the population pyramid chart
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Calculate positive and negative sentiment scores
+sentiment_data = df.copy()
+sentiment_data['positive'] = sentiment_data['compound'].apply(lambda x: x if x > 0 else 0)
+sentiment_data['negative'] = sentiment_data['compound'].apply(lambda x: x if x < 0 else 0)
+
+# Group data by ticker for positive and negative sentiment
+pos_data = sentiment_data.groupby('ticker')['positive'].sum().reset_index()
+neg_data = sentiment_data.groupby('ticker')['negative'].sum().reset_index()
+
+# Combine positive and negative data for plotting
+pos_data.set_index('ticker', inplace=True)
+neg_data.set_index('ticker', inplace=True)
+combined_data = pos_data.join(neg_data, how='outer').fillna(0)
+
+# Plot positive sentiment bars
+ax.barh(combined_data.index, combined_data['positive'], color='green', label='Positive')
+
+# Plot negative sentiment bars
+ax.barh(combined_data.index, combined_data['negative'], color='red', label='Negative')
+
+# Adding the legend
+ax.legend()
+
+# Adding labels
+ax.set_xlabel('Sentiment Score')
+ax.set_title('Sentiment Analysis Population Pyramid')
+
+# Adding grid
+ax.grid(True)
+
+# Save the population pyramid plot
 plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
 
+# Show the population pyramid chart (optional)
+plt.show()
