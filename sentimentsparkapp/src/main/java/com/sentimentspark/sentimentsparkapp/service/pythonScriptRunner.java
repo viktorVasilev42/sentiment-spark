@@ -15,7 +15,7 @@ public class pythonScriptRunner {
             var.append(companies.get(i));
             var.append(' ');
         }
-        Runtime.getRuntime().exec("python main.py " +var.toString()).waitFor();
+        Runtime.getRuntime().exec("python finviz.py " +var.toString()).waitFor();
         System.out.println("abc");
     }
 }

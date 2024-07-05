@@ -66,6 +66,7 @@ df = pd.DataFrame(parsed_data,
                   columns=['ticker', 'date', 'time', 'title']  # type: ignore
                   )
 
+
 vader = SentimentIntensityAnalyzer()
 df['compound'] = df['title'].apply(compound_score)
 
