@@ -66,10 +66,7 @@ df = pd.DataFrame(parsed_data,
                   columns=['ticker', 'date', 'time', 'title']  # type: ignore
                   )
 
-<<<<<<< Updated upstream:finviz.py
-=======
 print(df)
->>>>>>> Stashed changes:main.py
 
 vader = SentimentIntensityAnalyzer()
 df['compound'] = df['title'].apply(compound_score)
@@ -100,7 +97,6 @@ for i in range(0, len(tickers)):
 plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_bar.png', format='png', dpi=300)
 
 # Show the bar chart (optional)
-plt.show()
 
 # Plotting the population pyramid chart
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -137,6 +133,3 @@ ax.grid(True)
 
 # Save the population pyramid plot
 plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
-
-# Show the population pyramid chart (optional)
-plt.show()

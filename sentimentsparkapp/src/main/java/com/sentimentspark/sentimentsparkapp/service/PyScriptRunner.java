@@ -3,10 +3,10 @@ package com.sentimentspark.sentimentsparkapp.service;
 import java.io.IOException;
 import java.util.List;
 
-public class PythonScriptRunner {
+public class PyScriptRunner {
     private List<String> companies;
 
-    public PythonScriptRunner(List<String> companies) {
+    public PyScriptRunner(List<String> companies) {
         this.companies = companies;
     }
     public void runScript() throws IOException, InterruptedException {
@@ -15,7 +15,8 @@ public class PythonScriptRunner {
             var.append(companies.get(i));
             var.append(' ');
         }
-        Runtime.getRuntime().exec("python finviz.py " +var.toString()).waitFor();
+        Runtime.getRuntime().exec("python finviz.py " + var.toString()).waitFor();
         System.out.println("abc");
     }
 }
+
