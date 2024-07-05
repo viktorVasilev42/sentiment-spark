@@ -5,12 +5,13 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
 import matplotlib.pyplot as plt
 import mplcyberpunk
+import sys
 
 
 def trim_date_time(input_string):
     match = re.search(
-            r'(?:Today )?(?:[A-Za-z]{3}-\d{2}-\d{2} )?\d{2}:\d{2}(?:AM|PM)',
-            input_string
+        r'(?:Today )?(?:[A-Za-z]{3}-\d{2}-\d{2} )?\d{2}:\d{2}(?:AM|PM)',
+        input_string
     )
     if match:
         return match.group()
@@ -22,9 +23,13 @@ def compound_score(title):
     return vader.polarity_scores(title)['compound']
 
 
+n = len(sys.argv)
+print(n)
+tickers = sys.argv[1:]
+print(tickers)
 finviz_url = 'https://finviz.com/quote.ashx?t='
 # tickers = ['AMZN', 'GOOG',]
-tickers = ['META', 'AMZN', 'GOOG', 'NFLX']
+# tickers = ['META', 'AMZN', 'GOOG', 'NFLX']
 
 news_tables = {}
 for ticker in tickers:
@@ -55,7 +60,10 @@ for ticker, news_table in news_tables.items():
 
         if (date == 'Today'):
             date = pd.Timestamp.now().date()
-        parsed_data.append([ticker, date, time, title])
+
+        threshold_date = pd.Timestamp.now().normalize() - pd.Timedelta(days=4)
+        if date and pd.Timestamp(date) >= threshold_date:
+            parsed_data.append([ticker, date, time, title])
 
 #  print(parsed_data)
 
@@ -88,4 +96,5 @@ plt.tight_layout()
 for i in range(0, len(tickers)):
     mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[i])
 
-plt.show()
+plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
+
