@@ -22,6 +22,7 @@ def trim_date_time(input_string):
 def compound_score(title):
     return vader.polarity_scores(title)['compound']
 
+
 n = len(sys.argv)
 tickers = sys.argv[1:]
 finviz_url = 'https://finviz.com/quote.ashx?t='
@@ -94,7 +95,8 @@ for i in range(0, len(tickers)):
     mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[i])
 
 # Save the bar chart
-plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_bar.png', format='png', dpi=300)
+plt.savefig('../plots/sentiment_analysis_bar.png', format='png', dpi=300)
+plt.savefig('../../../src/main/resources/plots/sentiment_analysis_bar.png', format='png', dpi=300)
 
 # Show the bar chart (optional)
 
@@ -132,4 +134,5 @@ ax.set_title('Sentiment Analysis Population Pyramid')
 ax.grid(True)
 
 # Save the population pyramid plot
-plt.savefig('sentimentsparkapp/src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
+plt.savefig('../plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
+plt.savefig('../../../src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
