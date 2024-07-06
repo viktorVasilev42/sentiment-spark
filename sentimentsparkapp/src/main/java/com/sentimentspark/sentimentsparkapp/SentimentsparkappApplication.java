@@ -19,7 +19,7 @@ public class SentimentsparkappApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		PyScriptRunner pythonScriptRunner = new PyScriptRunner(List.of("META","GOOG"));
-		pythonScriptRunner.runScript();
+		// PyScriptRunner pythonScriptRunner = new PyScriptRunner(List.of("META","GOOG"));
+		// pythonScriptRunner.runScript();
 	}
 }
