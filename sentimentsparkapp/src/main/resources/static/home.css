@@ -1,88 +1,201 @@
 body {
-    background-color: rgb(33, 41, 70);
-    font-family: Arial, sans-serif;
-    color: white;
-    overflow: hidden;
-    margin: 0px;
+     background-color: rgb(33, 41, 70);
+     font-family: Arial, sans-serif;
+     color: white;
+     overflow-x: hidden;
+     margin: 0px;
 }
-
-.appBar {
-    display: flex;
-    height: 10vh; width: 100vw;
+ a {
+     text-decoration: none;
 }
-
-.homeContainer {
-    display: flex; flex-direction: column;
-    align-items: center;
-    height: 90vh; width: 100vw;
+ .appBar {
+     display: flex;
+     height: 10vh;
+     width: 100vw;
 }
-
-.scraperSelector {
-    display: flex; 
-    justify-content: center; align-items: center; gap: 1vw;
-    height: 6vh; width: 95vw;
-    border-bottom: 0.2vh solid rgb(59, 73, 125);
-
-    .scraperItem {
-       display: flex; justify-content: center; align-items: center;
-       height: 6vh; width: 10vw;
-       color: white;
-       font-weight: 700;
-       border-radius: 1vh 1vh 0vh 0vh;
-       cursor: pointer;
+ .homeContainer {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     height: 90vh;
+     width: 100vw;
+}
+ .scraperSelector {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 1vw;
+     height: 6vh;
+     width: 95vw;
+     border-bottom: 0.2vh solid rgb(59, 73, 125);
+     .scraperItem {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 6vh;
+         width: 10vw;
+         color: white;
+         text-decoration: none;
+         font-weight: 700;
+         border-radius: 1vh 1vh 0vh 0vh;
+         cursor: pointer;
     }
-
-    .scraperItemSelected {
-       background-color: rgb(6, 158, 163);
+     .scraperItemSelected {
+         background-color: rgb(6, 158, 163);
     }
-
-    .scraperItem:hover {
-        transition: 1s;
-        background-color: teal;
+     .scraperItem:hover {
+         transition: 1s;
+         background-color: teal;
     }
 }
-
-.siteStats {
-    display: flex; justify-content: center; align-items: center;
-    height: 10vh; width: 100vw;
-
-    .siteStatsItem {
-        display: flex; justify-content: center; align-items: center;
-        height: 10vh; width: 20vw;
+ .siteStats {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 10vh;
+     width: 100vw;
+     .siteStatsItem {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 10vh;
+         width: 20vw;
     }
-
-    .siteStatsSeparator{
-        background-color: rgb(59, 73, 125);
-        height: 7vh; width: 0.1vw;
+     .siteStatsSeparator{
+         background-color: rgb(59, 73, 125);
+         height: 7vh;
+         width: 0.1vw;
     }
 }
 
 .stocksStatsContainer {
-    height: 10vh; width: 100vw; overflow: hidden;
+     height: 10vh;
+     width: 100vw;
+     overflow: hidden;
+     .stocksStats {
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         height: 10vh;
+         width: 99vw;
+         gap: 1vw;
+         overflow-x: scroll;
+         overflow-y: hidden;
+         padding-top: 5px;
+         padding-bottom: 17px;
+         padding-inline: 1vw 1vw;
+         box-sizing: content-box;
 
-.stocksStats {
-    display: flex; justify-content: flex-start; align-items: center;
-    height: 10vh; width: 99vw; gap: 1vw; 
-    overflow-x: scroll; overflow-y: hidden;
-    padding-top: 5px;
-    padding-bottom: 17px;
-    padding-inline: 1vw 1vw;
-    box-sizing: content-box;
-
-    .stocksStatsItem {
-        display: flex; justify-content: flex-start; align-items: center;
-        padding-inline: 1vw 1vw;
-        font-size: 1.7vh;
-        gap: 1vw;
-        height: 8vh; width: 13vw;
-        border: 0.2vh solid rgb(59, 73, 125); 
-        border-radius: 1vh;
-
-        .arrowUp {
-            height: 2.5vw; width: 2.5vw;
-            background-color: lightgreen;
-            border-radius: 0.2vh;
+         .stocksStatsItem {
+             display: flex;
+             justify-content: flex-start;
+             align-items: center;
+             padding-inline: 1vw 0vw;
+             font-size: 1.7vh;
+             gap: 1vw;
+             height: 8vh;
+             width: 13vw;
+             border: 0.2vh solid rgb(59, 73, 125);
+             border-radius: 1vh;
+             .arrowUp {
+                 height: 2.5vw;
+                 width: 2.5vw;
+                 background-color: lightgreen;
+                 border-radius: 0.2vh;
+            }
         }
     }
 }
+
+ .companySelect {
+     height: 110vh;
+     width: 100vw;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: flex-start;
+     gap: 5vh 0vw;
+     margin-top: 4vh;
+     .companySelectItem {
+         height: 40vh;
+         width: 20vw;
+         margin-left: 3.9vw;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 0.2vh solid rgb(59, 73, 125);
+         border-radius: 2vh;
+         .imageDiv {
+             height: 33vh;
+             width: 20vw;
+             border-bottom: 0.2vh solid rgb(59, 73, 125);
+             display: flex;
+             justify-content: center;
+             align-items: center;
+        }
+         .checkBoxDiv {
+             height: 7vh;
+             width: 20vw;
+             display: flex; justify-content: flex-end; align-items: center;
+             padding-right: 2vw;
+
+             .checkbox-wrapper-17 input[type=checkbox] {
+                 height: 0;
+                 width: 0;
+                 display: none;
+            }
+             .checkbox-wrapper-17 label {
+                 --size: 50px;
+                 cursor: pointer;
+                 width: var(--size);
+                 height: calc(var(--size) / 2);
+                 background: grey;
+                 display: block;
+                 border-radius: 100px;
+                 position: relative;
+            }
+             .checkbox-wrapper-17 label:after {
+                 content: '';
+                 position: absolute;
+                 top: 6%;
+                 left: 2.5%;
+                 width: calc(50% - 5%);
+                 height: calc(100% - 11%);
+                 background: #fff;
+                 border-radius: 90px;
+                 transition: 0.3s;
+            }
+             .checkbox-wrapper-17 input:checked + label {
+                 background: #bada55;
+            }
+             .checkbox-wrapper-17 input:checked + label:after {
+                 left: calc(100% - 2.5%);
+                 transform: translateX(-100%);
+            }
+             .checkbox-wrapper-17 label:active:after {
+                 width: 55%;
+            }
+        }
+    }
+}
+
+.chartsContainer {
+    width: 100vw;
+    display: flex; flex-direction: column; gap: 5vh;
+    align-items: center;
+}
+
+.submitButton {
+    height: 7vh; width: 10vw;
+    background-color: rgb(6, 158, 163);
+    border: 0px;
+    border-radius: 2.5vh;
+    color: white;
+    font-weight: 700;
+    font-size: 2.5vh;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: teal;
 }

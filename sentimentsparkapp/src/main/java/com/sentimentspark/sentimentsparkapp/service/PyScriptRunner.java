@@ -20,7 +20,7 @@ public class PyScriptRunner {
         List<String> command = new ArrayList<>();
         command.add("python");
         command.add("main_script_runner.py");
-        command.add("stock_analysis");
+        command.add("finviz");
         command.addAll(companies);
 
         System.out.println("Executing command: " + command);
