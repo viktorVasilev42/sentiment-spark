@@ -59,15 +59,13 @@ for ticker, news_table in news_tables.items():
         if (date == 'Today'):
             date = pd.Timestamp.now().date()
 
-        threshold_date = pd.Timestamp.now().normalize() - pd.Timedelta(days=3)
+        threshold_date = pd.Timestamp.now().normalize() - pd.Timedelta(days=4)
         if date and pd.Timestamp(date) >= threshold_date:
             parsed_data.append([ticker, date, time, title])
 
 df = pd.DataFrame(parsed_data,
                   columns=['ticker', 'date', 'time', 'title']  # type: ignore
                   )
-
-print(df)
 
 vader = SentimentIntensityAnalyzer()
 df['compound'] = df['title'].apply(compound_score)
@@ -83,7 +81,7 @@ print(pivot_data)
 
 # Plotting the bar chart
 plt.style.use('cyberpunk')
-pivot_data.plot(kind='bar', figsize=(12, 6), width=0.8)
+pivot_data.plot(kind='bar', figsize=(18, 6), width=0.7)
 plt.title('Sentiment Scores by Ticker and Date')
 plt.xlabel('Date')
 plt.ylabel('Average Sentiment Score')

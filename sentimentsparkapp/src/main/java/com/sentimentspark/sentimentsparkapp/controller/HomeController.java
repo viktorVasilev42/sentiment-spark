@@ -3,13 +3,21 @@ package com.sentimentspark.sentimentsparkapp.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sentimentspark.sentimentsparkapp.model.CompaniesDTO;
+import com.sentimentspark.sentimentsparkapp.service.HomeService;
+
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequestMapping("/hello")
+@RequiredArgsConstructor
 public class HomeController {
+    private final HomeService homeService;
 
     @GetMapping()
     public String abc(
@@ -24,11 +32,15 @@ public class HomeController {
 
     @PostMapping()
     public String test(
-            @RequestParam(required = false) boolean one,
-            @RequestParam(required = false) boolean two
+            @ModelAttribute CompaniesDTO companiesDTO
     ) {
-        System.out.println("Checkbox one: " + one);
-        System.out.println("Checkbox two: " + two);
+        try {
+            homeService.runFinViz(companiesDTO.getAllChecked());
+        }
+        catch (Exception e) {
+            return "redirect:/hello";
+        }
+
         return "redirect:/hello?generate=true";
     }
 }

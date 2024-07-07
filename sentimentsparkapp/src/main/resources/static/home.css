@@ -67,7 +67,8 @@ body {
          width: 0.1vw;
     }
 }
- .stocksStatsContainer {
+
+.stocksStatsContainer {
      height: 10vh;
      width: 100vw;
      overflow: hidden;
@@ -84,6 +85,7 @@ body {
          padding-bottom: 17px;
          padding-inline: 1vw 1vw;
          box-sizing: content-box;
+
          .stocksStatsItem {
              display: flex;
              justify-content: flex-start;
@@ -104,6 +106,7 @@ body {
         }
     }
 }
+
  .companySelect {
      height: 85vh;
      width: 100vw;
@@ -175,4 +178,9 @@ body {
         }
     }
 }
- 
+
+.chartsContainer {
+    width: 100vw;
+    display: flex; flex-direction: column; gap: 5vh;
+    align-items: center;
+}

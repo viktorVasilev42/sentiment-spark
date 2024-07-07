@@ -119,6 +119,19 @@
                 <div style="width: 1vw; height: 10vh"></div>
             </div>
             </div>
+
+            <div th:if="${generate}" class="chartsContainer">
+                <h1>Generate</h1>
+                <img 
+                    th:src="@{/plots/sentiment_analysis_bar.png}"
+                    style="width: 80vw"
+                >
+                <img 
+                    th:src="@{/plots/sentiment_analysis_pyramid.png}"
+                    style="width: 80vw"
+                >
+            </div>
+
             <form th:action="@{/hello}" th:method="POST">
             <div class="companySelect">
                 <div class="companySelectItem">
@@ -130,7 +143,7 @@
                     </div>
                     <div class="checkBoxDiv">
                         <div class="checkbox-wrapper-17">
-                            <input type="checkbox" id="switch-17" name="one" /><label for="switch-17"></label>
+                            <input type="checkbox" id="switch-17" name="metaChecked" /><label for="switch-17"></label>
                         </div>
                         <input type="submit" value="Submit" />
                     </div>
@@ -139,12 +152,25 @@
                     <div class="imageDiv">
                         <img 
                             src="https://www.freeiconspng.com/thumbs/amazon-icon/amazon-icon--socialmedia-iconset--uiconstock-0.png"
+                            style="height: 31vh; width: 17vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-18" name="amazonChecked" /><label for="switch-18"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/227_Netflix_logo-512.png"
                             style="height: 33vh; width: 18vw"
                         />
                     </div>
                     <div class="checkBoxDiv">
                         <div class="checkbox-wrapper-17">
-                            <input type="checkbox" id="switch-18" name="two" /><label for="switch-18"></label>
+                            <input type="checkbox" id="switch-19" name="netflixChecked" /><label for="switch-19"></label>
                         </div>
                     </div>
                 </div>
@@ -159,5 +185,7 @@
             </div>
             </form>
         </div>
+
+        <script type="text/javascript" src="home.js"></script>
     </body>
 </html>
