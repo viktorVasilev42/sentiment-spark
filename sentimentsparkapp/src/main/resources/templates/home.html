@@ -131,17 +131,25 @@
             </div>
 
             <div th:if="${generate}" class="chartsContainer">
-                <h1>Generate</h1>
-                <img 
-                    id="firstChart"
-                    th:src="@{/plots/sentiment_analysis_bar.png}"
-                    style="width: 80vw"
-                >
-                <img 
-                    id="secondChart"
-                    th:src="@{/plots/sentiment_analysis_pyramid.png}"
-                    style="width: 80vw"
-                >
+                <div class="mainPlots">
+                    <img 
+                        id="firstChart"
+                        th:src="@{/plots/sentiment_analysis_bar.png}"
+                        style="width: 70vw"
+                    >
+                    <img 
+                        id="secondChart"
+                        th:src="@{/plots/sentiment_analysis_pyramid.png}"
+                        style="width: 70vw"
+                    >
+                </div>
+                <div class="subPlots">
+                    <img 
+                        th:each="subplot : ${subplots}"
+                        th:src="${subplot}"
+                        style="width: 20vw"
+                    >
+                </div>
             </div>
 
             <form th:action="@{/hello}" th:method="POST">
