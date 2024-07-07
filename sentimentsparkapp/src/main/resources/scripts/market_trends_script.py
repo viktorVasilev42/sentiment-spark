@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
+import os
 
 
 def fetch_element_content(url, element_id):
@@ -16,27 +18,40 @@ def fetch_element_content(url, element_id):
     soup = BeautifulSoup(response.text, 'html.parser')
 
     element = soup.find(id=element_id)
-
+    parsed_data = []
     news_items = element.find_all('tr')
     for news_item in news_items:
-        print(news_item)
-        print("\n")
+        name = news_item.find('a')
+        value = news_item.findAll('td')
+        value = value[1]
+        percent_change = news_item.find('span')
+        parsed_data.append((name.text, value.text, percent_change.text))
 
-    # if element:
-    #     return element.get_text(strip=True)
-    # else:
-    #     raise Exception(f"Element with ID {element_id} not found")
+    return parsed_data
+
+
+def write_files_to_csv(parsed_data):
+    filepath_1 = "../market_data/stock_data.csv"
+    filepath_2 = "../../../../target/classes/market_data/stock_data.csv"
+
+    os.makedirs(os.path.dirname(filepath_1), exist_ok=True)
+    os.makedirs(os.path.dirname(filepath_2), exist_ok=True)
+    with open(filepath_1, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow(['Name', 'Value', 'Percent Change'])
+        writer.writerows(parsed_data)
+
+    with open(filepath_2, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow(['Name', 'Value', 'Percent Change'])
+        writer.writerows(parsed_data)
 
 
 def main():
     url = 'https://finviz.com/'
     element_id = 'js-signals_1'
-
-    try:
-        content = fetch_element_content(url, element_id)
-        print("Element content:", content)
-    except Exception as e:
-        print("Error:", e)
+    content = fetch_element_content(url, element_id)
+    write_files_to_csv(content)
 
 
 if __name__ == "__main__":
