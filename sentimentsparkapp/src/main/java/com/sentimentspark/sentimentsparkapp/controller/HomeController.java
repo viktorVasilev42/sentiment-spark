@@ -33,7 +33,7 @@ public class HomeController {
     @PostMapping()
     public String test(
             @ModelAttribute CompaniesDTO companiesDTO
-    ) {
+    ) throws InterruptedException {
         try {
             homeService.runFinViz(companiesDTO.getAllChecked());
         }
@@ -41,6 +41,7 @@ public class HomeController {
             return "redirect:/hello";
         }
 
+        Thread.sleep(2000);
         return "redirect:/hello?generate=true";
     }
 }

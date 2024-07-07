@@ -131,6 +131,10 @@ ax.set_title('Sentiment Analysis Population Pyramid')
 # Adding grid
 ax.grid(True)
 
+plt.style.use('cyberpunk')
+mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[0])
+mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[1])
+
 # Save the population pyramid plot
 plt.savefig('../plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
 plt.savefig('../../../src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)

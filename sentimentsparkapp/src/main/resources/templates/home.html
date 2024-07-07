@@ -39,7 +39,7 @@
             </div>
             <div class="stocksStatsContainer">
             <div class="stocksStats">
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-1" style="position: absolute; left: 0vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -50,7 +50,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-2" style="position: absolute; left: 16vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -61,7 +61,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-3" style="position: absolute; left: 32vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -72,7 +72,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-4" style="position: absolute; left: 48vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -83,7 +83,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-5" style="position: absolute; left: 64vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -94,7 +94,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-6" style="position: absolute; left: 80vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -105,7 +105,7 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div class="stocksStatsItem">
+                <div class="stocksStatsItem" id="ssi-7" style="position: absolute; left: 96vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
                         <span>Dax</span>
@@ -116,17 +116,29 @@
                         <div>-42.80</div>
                     </div>
                 </div>
-                <div style="width: 1vw; height: 10vh"></div>
+                <div class="stocksStatsItem" id="ssi-7" style="position: absolute; left: 112vw">
+                    <div class="arrowUp"></div>
+                    <div style="display: flex; flex-direction: column; width: 4vw">
+                        <span>Dax</span>
+                        <span>18,475.45</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
+                        <div>-0.39%</div>
+                        <div>-42.80</div>
+                    </div>
+                </div>
             </div>
             </div>
 
             <div th:if="${generate}" class="chartsContainer">
                 <h1>Generate</h1>
                 <img 
+                    id="firstChart"
                     th:src="@{/plots/sentiment_analysis_bar.png}"
                     style="width: 80vw"
                 >
                 <img 
+                    id="secondChart"
                     th:src="@{/plots/sentiment_analysis_pyramid.png}"
                     style="width: 80vw"
                 >
@@ -145,7 +157,6 @@
                         <div class="checkbox-wrapper-17">
                             <input type="checkbox" id="switch-17" name="metaChecked" /><label for="switch-17"></label>
                         </div>
-                        <input type="submit" value="Submit" />
                     </div>
                 </div>
                 <div class="companySelectItem">
@@ -165,7 +176,7 @@
                     <div class="imageDiv">
                         <img 
                             src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/227_Netflix_logo-512.png"
-                            style="height: 33vh; width: 18vw"
+                            style="height: 30vh; width: 16vw"
                         />
                     </div>
                     <div class="checkBoxDiv">
@@ -175,12 +186,74 @@
                     </div>
                 </div>
                 <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://pngimg.com/d/microsoft_PNG13.png"
+                            style="height: 29vh; width: 15vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-20" name="microsoftChecked" /><label for="switch-20"></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                            style="height: 33vh; width: 18vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-21" name="googleChecked" /><label for="switch-21"></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://cdn.freebiesupply.com/images/large/2x/nvidia-logo-black-and-white.png"
+                            style="height: 29vh; width: 15vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-22" name="nvidiaChecked" /><label for="switch-22"></label>
+                        </div>
+                    </div>
                 </div>
                 <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png"
+                            style="height: 33vh; width: 18vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-23" name="teslaChecked" /><label for="switch-23"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="companySelectItem">
+                    <div class="imageDiv">
+                        <img 
+                            src="https://www.logo.wine/a/logo/Boeing/Boeing-Logo.wine.svg"
+                            style="height: 33vh; width: 18vw"
+                        />
+                    </div>
+                    <div class="checkBoxDiv">
+                        <div class="checkbox-wrapper-17">
+                            <input type="checkbox" id="switch-24" name="boeingChecked" /><label for="switch-24"></label>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; width: 96vw; height: 5vh">
+                    <input type="submit" value="Submit" class="submitButton" />
+                </div>
+                <div style="height: 10vh; width: 100vw">
                 </div>
             </div>
             </form>
