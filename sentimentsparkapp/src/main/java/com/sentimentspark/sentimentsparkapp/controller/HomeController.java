@@ -1,5 +1,9 @@
 package com.sentimentspark.sentimentsparkapp.controller;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +31,21 @@ public class HomeController {
     ) {
         model.addAttribute("scraper", scraper);
         model.addAttribute("generate", generate);
+
+        String subplotsPath = "src/main/resources/plots/subplots/";
+        File directory = new File(subplotsPath);
+        File[] files = directory.listFiles();
+
+        List<String> imagePaths = new ArrayList<>();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    imagePaths.add("/plots/subplots/" + file.getName());
+                }
+            }
+        }
+        model.addAttribute("subplots", imagePaths);
+
         return "home";
     }
 

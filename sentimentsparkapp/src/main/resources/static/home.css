@@ -181,8 +181,21 @@ body {
 
 .chartsContainer {
     width: 100vw;
-    display: flex; flex-direction: column; gap: 5vh;
-    align-items: center;
+    display: flex; flex-direction: row; gap: 0vh;
+    justify-content: center;
+
+    .mainPlots {
+        width: 75vw;
+        display: flex; flex-direction: column; gap: 5vh;
+        align-items: center;
+    }
+
+    .subPlots {
+        width: 25vw;
+        display: flex; flex-direction: column; gap: 5vh;
+        max-height: 120vh;
+        overflow-y: scroll;
+    }
 }
 
 .submitButton {
