@@ -46,7 +46,6 @@ def analyze_sentiment(df, tickers):
 
     # Show the bar chart (optional)
 
-    # Plotting the population pyramid chart
     fig, ax = plt.subplots(figsize=(10, 6))
 
     # Calculate positive and negative sentiment scores
@@ -63,22 +62,20 @@ def analyze_sentiment(df, tickers):
     neg_data.set_index('ticker', inplace=True)
     combined_data = pos_data.join(neg_data, how='outer').fillna(0)
 
-    # Plot positive sentiment bars
     ax.barh(combined_data.index, combined_data['positive'], color='green', label='Positive')
 
-    # Plot negative sentiment bars
     ax.barh(combined_data.index, combined_data['negative'], color='red', label='Negative')
 
-    # Adding the legend
+    plt.style.use('cyberpunk')
+    mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[0])
+    mplcyberpunk.add_bar_gradient(bars=plt.gca().containers[1])
+
     ax.legend()
 
-    # Adding labels
     ax.set_xlabel('Sentiment Score')
     ax.set_title('Sentiment Analysis Population Pyramid')
 
-    # Adding grid
     ax.grid(True)
 
-    # Save the population pyramid plot
     plt.savefig('../plots/sentiment_analysis_pyramid.png', format='png', dpi=300)
     plt.savefig('../../../src/main/resources/plots/sentiment_analysis_pyramid.png', format='png', dpi=300)

@@ -195,6 +195,10 @@ body {
         display: flex; flex-direction: column; gap: 5vh;
         max-height: 120vh;
         overflow-y: scroll;
+
+        .subPlotImg {
+            width: 20vw;
+        }
     }
 }
 

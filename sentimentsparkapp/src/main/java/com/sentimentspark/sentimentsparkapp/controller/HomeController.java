@@ -1,6 +1,7 @@
 package com.sentimentspark.sentimentsparkapp.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sentimentspark.sentimentsparkapp.model.CompaniesDTO;
+import com.sentimentspark.sentimentsparkapp.model.StocksDTO;
 import com.sentimentspark.sentimentsparkapp.service.HomeService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,19 +34,16 @@ public class HomeController {
         model.addAttribute("scraper", scraper);
         model.addAttribute("generate", generate);
 
-        String subplotsPath = "src/main/resources/plots/subplots/";
-        File directory = new File(subplotsPath);
-        File[] files = directory.listFiles();
-
-        List<String> imagePaths = new ArrayList<>();
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    imagePaths.add("/plots/subplots/" + file.getName());
-                }
-            }
-        }
+        List<String> imagePaths = homeService.getSubplotPaths();
         model.addAttribute("subplots", imagePaths);
+
+        try {
+            List<StocksDTO> stocksDataList = homeService.readStockData();
+            model.addAttribute("stocksDataList", stocksDataList);
+        }
+        catch (IOException e) {
+            System.out.println("Error loading stock data from csv");
+        }
 
         return "home";
     }

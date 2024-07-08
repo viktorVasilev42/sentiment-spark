@@ -18,12 +18,12 @@
                 </a>
                 <a th:href="@{/hello?scraper=1}">
                     <div th:class="${scraper == 1 ? 'scraperItem scraperItemSelected' : 'scraperItem'}">
-                        Scraper 2
+                        Market Watch
                     </div>
                 <a>
                 <a th:href="@{/hello?scraper=2}">
                     <div th:class="${scraper == 2 ? 'scraperItem scraperItemSelected' : 'scraperItem'}">
-                        Scraper 2
+                        Market Trends
                     </div>
                 <a>
             </div>
@@ -42,89 +42,81 @@
                 <div class="stocksStatsItem" id="ssi-1" style="position: absolute; left: 0vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[0].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[0].percentChange}"></div>
+                        <div th:text="${stocksDataList[0].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-2" style="position: absolute; left: 16vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[1].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[1].percentChange}"></div>
+                        <div th:text="${stocksDataList[1].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-3" style="position: absolute; left: 32vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[2].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[2].percentChange}"></div>
+                        <div th:text="${stocksDataList[2].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-4" style="position: absolute; left: 48vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[3].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[3].percentChange}"></div>
+                        <div th:text="${stocksDataList[3].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-5" style="position: absolute; left: 64vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[4].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[4].percentChange}"></div>
+                        <div th:text="${stocksDataList[4].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-6" style="position: absolute; left: 80vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[5].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[5].percentChange}"></div>
+                        <div th:text="${stocksDataList[5].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-7" style="position: absolute; left: 96vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[6].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[6].percentChange}"></div>
+                        <div th:text="${stocksDataList[6].value}"></div>
                     </div>
                 </div>
                 <div class="stocksStatsItem" id="ssi-7" style="position: absolute; left: 112vw">
                     <div class="arrowUp"></div>
                     <div style="display: flex; flex-direction: column; width: 4vw">
-                        <span>Dax</span>
-                        <span>18,475.45</span>
+                        <span th:text="${stocksDataList[7].name}"></span>
                     </div>
                     <div style="display: flex; flex-direction: column; width: 4vw; padding-left: 2vw">
-                        <div>-0.39%</div>
-                        <div>-42.80</div>
+                        <div th:text="${stocksDataList[7].percentChange}"></div>
+                        <div th:text="${stocksDataList[7].value}"></div>
                     </div>
                 </div>
             </div>
@@ -144,11 +136,13 @@
                     >
                 </div>
                 <div class="subPlots">
-                    <img 
-                        th:each="subplot : ${subplots}"
-                        th:src="${subplot}"
-                        style="width: 20vw"
-                    >
+                    <div th:each="subplot : ${subplots}" style="display: flex; flex-direction: column; align-items: center;">
+                         <img 
+                             th:src="${subplot}"
+                             class="subPlotImg"
+                         >
+                         <span class="subPlotTitle" th:text="${#strings.substring(subplot, 35, 39)}"></span>
+                    </div>
                 </div>
             </div>
 

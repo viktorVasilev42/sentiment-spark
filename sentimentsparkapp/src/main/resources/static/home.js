@@ -17,5 +17,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             checkHit(item);
         }
     }, 10);
+
+
+    let subPlotTitles = document.getElementsByClassName("subPlotTitle");
+    for (title of subPlotTitles) {
+        let currentString = title.innerHTML;
+        if (currentString.includes("_")) {
+            title.innerHTML = currentString.substring(0, currentString.indexOf("_"))
+        }
+    }
 });
 
