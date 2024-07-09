@@ -1,6 +1,7 @@
 package com.sentimentspark.sentimentsparkapp.service;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,8 +38,8 @@ public class HomeService {
         return result;
     }
 
-    public List<String> getSubplotPaths() {
-        String subplotsPath = "src/main/resources/plots/subplots/";
+    public List<String> getSubplotPaths() throws FileNotFoundException {
+        String subplotsPath = ResourceUtils.getFile("classpath:plots/subplots/").getAbsolutePath();
         File directory = new File(subplotsPath);
         File[] files = directory.listFiles();
 

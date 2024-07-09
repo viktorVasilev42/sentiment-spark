@@ -1,6 +1,7 @@
 package com.sentimentspark.sentimentsparkapp.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,13 @@ public class HomeController {
         model.addAttribute("scraper", scraper);
         model.addAttribute("generate", generate);
 
-        List<String> imagePaths = homeService.getSubplotPaths();
-        model.addAttribute("subplots", imagePaths);
+        try {
+            List<String> imagePaths = homeService.getSubplotPaths();
+            model.addAttribute("subplots", imagePaths);
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error loading subplots");
+        }
 
         try {
             List<StocksDTO> stocksDataList = homeService.readStockData();
