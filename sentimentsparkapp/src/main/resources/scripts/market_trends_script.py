@@ -25,6 +25,8 @@ def fetch_element_content(url, element_id):
         value = news_item.findAll('td')
         value = value[1]
         percent_change = news_item.find('span')
+        if name is None or value is None or percent_change is None:
+            continue
         parsed_data.append((name.text, value.text, percent_change.text))
 
     return parsed_data
@@ -32,7 +34,7 @@ def fetch_element_content(url, element_id):
 
 def write_files_to_csv(parsed_data):
     filepath_1 = "../market_data/stock_data.csv"
-    filepath_2 = "../../../../target/classes/market_data/stock_data.csv"
+    filepath_2 = "../../../src/main/resources/market_data/stock_data.csv"
 
     os.makedirs(os.path.dirname(filepath_1), exist_ok=True)
     os.makedirs(os.path.dirname(filepath_2), exist_ok=True)

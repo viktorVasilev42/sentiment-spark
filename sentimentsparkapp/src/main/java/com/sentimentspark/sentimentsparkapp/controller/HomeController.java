@@ -1,9 +1,7 @@
 package com.sentimentspark.sentimentsparkapp.controller;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -21,7 +19,7 @@ import com.sentimentspark.sentimentsparkapp.service.HomeService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/hello")
+@RequestMapping("/home")
 @RequiredArgsConstructor
 public class HomeController {
     private final HomeService homeService;
@@ -54,18 +52,48 @@ public class HomeController {
         return "home";
     }
 
-    @PostMapping()
-    public String test(
+    @PostMapping("/0")
+    public String postFinviz(
             @ModelAttribute CompaniesDTO companiesDTO
     ) throws InterruptedException {
         try {
             homeService.runFinViz(companiesDTO.getAllChecked());
         }
         catch (Exception e) {
-            return "redirect:/hello";
+            return "redirect:/home";
         }
 
         Thread.sleep(2000);
-        return "redirect:/hello?generate=true";
+        return "redirect:/home?generate=true";
+    }
+
+    @PostMapping("/1")
+    public String postMarketWatch(
+            @ModelAttribute CompaniesDTO companiesDTO
+    ) throws InterruptedException {
+        try {
+            homeService.runMarketWatch(companiesDTO.getAllChecked());
+        }
+        catch (Exception e) {
+            return "redirect:/home";
+        }
+
+        Thread.sleep(2000);
+        return "redirect:/home?generate=true&scraper=1";
+    }
+
+    @PostMapping("/2")
+    public String postStockAnalysis(
+            @ModelAttribute CompaniesDTO companiesDTO
+    ) throws InterruptedException {
+        try {
+            homeService.runStockAnalysis(companiesDTO.getAllChecked());
+        }
+        catch (Exception e) {
+            return "redirect:/home";
+        }
+
+        Thread.sleep(2000);
+        return "redirect:/home?generate=true&scraper=2";
     }
 }

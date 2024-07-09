@@ -16,11 +16,11 @@ public class PyScriptRunner {
         this.companies = companies;
     }
 
-    public void runScript() throws IOException, InterruptedException {
+    public void runScript(String scraper) throws IOException, InterruptedException {
         List<String> command = new ArrayList<>();
         command.add("python");
         command.add("main_script_runner.py");
-        command.add("finviz");
+        command.add(scraper);
         command.addAll(companies);
 
         System.out.println("Executing command: " + command);

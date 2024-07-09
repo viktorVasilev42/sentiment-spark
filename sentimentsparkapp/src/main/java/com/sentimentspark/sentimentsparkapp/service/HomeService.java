@@ -17,10 +17,19 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class HomeService {
-
     public void runFinViz(List<String> targets) throws IOException, InterruptedException {
 	    PyScriptRunner pythonScriptRunner = new PyScriptRunner(targets);
-	    pythonScriptRunner.runScript();
+	    pythonScriptRunner.runScript("finviz");
+    }
+
+    public void runMarketWatch(List<String> targets) throws IOException, InterruptedException {
+	    PyScriptRunner pythonScriptRunner = new PyScriptRunner(targets);
+	    pythonScriptRunner.runScript("market_watch");
+    }
+
+    public void runStockAnalysis(List<String> targets) throws IOException, InterruptedException {
+	    PyScriptRunner pythonScriptRunner = new PyScriptRunner(targets);
+	    pythonScriptRunner.runScript("stock_analysis");
     }
 
     public List<StocksDTO> readStockData() throws IOException {

@@ -11,17 +11,17 @@
         </div>
         <div class="homeContainer">
             <div class="scraperSelector">
-                <a th:href="@{/hello?scraper=0}">
+                <a th:href="@{/home?scraper=0}">
                     <div th:class="${scraper == 0 ? 'scraperItem scraperItemSelected' : 'scraperItem'}">
                         Finviz
                     </div>
                 </a>
-                <a th:href="@{/hello?scraper=1}">
+                <a th:href="@{/home?scraper=1}">
                     <div th:class="${scraper == 1 ? 'scraperItem scraperItemSelected' : 'scraperItem'}">
                         Market Watch
                     </div>
                 <a>
-                <a th:href="@{/hello?scraper=2}">
+                <a th:href="@{/home?scraper=2}">
                     <div th:class="${scraper == 2 ? 'scraperItem scraperItemSelected' : 'scraperItem'}">
                         Market Trends
                     </div>
@@ -146,7 +146,7 @@
                 </div>
             </div>
 
-            <form th:action="@{/hello}" th:method="POST">
+            <form th:action="@{/home/} + ${scraper}" th:method="POST">
             <div class="companySelect">
                 <div class="companySelectItem">
                     <div class="imageDiv">
