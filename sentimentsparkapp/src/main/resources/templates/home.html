@@ -6,6 +6,9 @@
     </head>
 
     <body>
+        <div id="loadingScreen">
+            <img th:src="@{/images/loading.gif}" style="height: 100vh; width: 100vw" />
+        </div>
         <div class="appBar">
 
         </div>
@@ -262,5 +265,13 @@
         </div>
 
         <script type="text/javascript" src="home.js"></script>
+
+        <script>
+            document.getElementsByClassName("submitButton")[0].addEventListener("click", () => {
+                let loadingScreen = document.getElementById("loadingScreen");
+                loadingScreen.style.display = "flex";
+                window.scrollTo(0, 0);
+            });
+        </script>
     </body>
 </html>

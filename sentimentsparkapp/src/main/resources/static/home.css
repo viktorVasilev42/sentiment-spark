@@ -8,6 +8,12 @@ body {
  a {
      text-decoration: none;
 }
+#loadingScreen {
+    height: 100vh; width: 100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
  .appBar {
      display: flex;
      height: 10vh;
